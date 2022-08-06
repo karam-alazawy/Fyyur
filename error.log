@@ -1,1 +1,444 @@
 
+2022-08-06 22:39:38,790 INFO: errors [in /Users/alazawy/Desktop/Fyyur/app.py:425]
+2022-08-06 22:40:32,178 ERROR: Exception on /artists/2 [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7ff13cd2f460 (otid=0x7ff13cd25fc0) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 204, in show_artist
+    artist=Artist.query.get(artist_id)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:40:37,046 ERROR: Exception on /artists/2 [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7ff13ce12e00 (otid=0x7ff13ce41380) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 204, in show_artist
+    artist=Artist.query.get(artist_id)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:40:39,392 ERROR: Exception on /venues [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7ff13ce1fb40 (otid=0x7ff13ce4bd80) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 58, in venues
+    city_state=db.session.query(Venue.city,Venue.state).group_by(Venue.city,Venue.state).all()
+  File "<string>", line 2, in query
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 24, in _proxied
+    return self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:40:42,908 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7ff13ce22670 (otid=0x7ff13cce7940) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    data=Artist.query.with_entities(Artist.id,Artist.name).all()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:40:52,149 INFO: errors [in /Users/alazawy/Desktop/Fyyur/app.py:425]
+2022-08-06 22:40:52,868 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3e6d1a0 (otid=0x7fdee3e69b40) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    data=Artist.query.with_entities(Artist.id,Artist.name).all()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:41:58,142 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f50460 (otid=0x7fdee3f23940) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    q=request.form['search_term']
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:41:59,793 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f50a90 (otid=0x7fdee3f3b100) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    q=request.form['search_term']
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:42:57,546 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f50d50 (otid=0x7fdee3f3be80) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    artists=Artist.query.with_entities(Artist.name,Artist.id).filter(Artist.name.ilike(f"%{q}%")).all()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:42:58,532 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f50a90 (otid=0x7fdee3f3c040) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    artists=Artist.query.with_entities(Artist.name,Artist.id).filter(Artist.name.ilike(f"%{q}%")).all()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:48:29,226 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f50460 (otid=0x7fdee3f3df40) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    #  Artists
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:48:35,605 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f65040 (otid=0x7fdee3f64980) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    #  Artists
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:48:36,150 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f65300 (otid=0x7fdee3f6a580) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    #  Artists
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'
+2022-08-06 22:49:01,157 ERROR: Exception on /artists [GET] [in /Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1008, in __call__
+    return self.registry[key]
+KeyError: <greenlet.greenlet object at 0x7fdee3f655c0 (otid=0x7fdee3f70180) current active started main>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/alazawy/Desktop/Fyyur/app.py", line 188, in artists
+    #  Artists
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 552, in __get__
+    return type.query_class(mapper, session=self.sa.session())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/scoping.py", line 47, in __call__
+    sess = self.registry()
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/util/_collections.py", line 1010, in __call__
+    return self.registry.setdefault(key, self.createfunc())
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/sqlalchemy/orm/session.py", line 4205, in __call__
+    return self.class_(**local_kw)
+  File "/Users/alazawy/opt/anaconda3/lib/python3.9/site-packages/flask_sqlalchemy/__init__.py", line 175, in __init__
+    track_modifications = app.config['SQLALCHEMY_TRACK_MODIFICATIONS']
+KeyError: 'SQLALCHEMY_TRACK_MODIFICATIONS'

@@ -7,11 +7,11 @@ import dateutil.parser
 import babel
 from flask import Flask, render_template, request, Response, flash, redirect, url_for,jsonify,abort
 from flask_moment import Moment
-from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 from flask_wtf import Form
 from forms import *
+from models import *
 from flask_migrate import Migrate
 from sqlalchemy.ext.declarative import declarative_base
 import sys
@@ -24,59 +24,10 @@ from datetime import datetime
 app = Flask(__name__)
 moment = Moment(app)
 app.config.from_object('config')
-db = SQLAlchemy(app)
+db.init_app(app)
 migrate = Migrate(app, db)
 Base = declarative_base()
 date = datetime.now()
-
-
-#----------------------------------------------------------------------------#
-# Models.
-#----------------------------------------------------------------------------#
-
-
-
-
-class Venue(db.Model):
-    __tablename__ = 'venue'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
-    address = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
-    image_link = db.Column(db.String(500))
-    website = db.Column(db.String(500))
-    facebook_link = db.Column(db.String(120))
-    seeking_talent = db.Column(db.Boolean, unique=False, default=False)
-    genres = db.Column(db.Enum('Alternative', 'Blues','Classical','Country','Electronic','Folk','funk','Hip-Hop',
-   'Heavy Metal','Instrumental','Jazz','Musical Theatre','Pop','Punk','R&B','Rock n Roll','Soul','Other', name ='genrestypes'))
-    artists = db.relationship("Artist", secondary="association", back_populates="venues")
- 
-
-
-class Artist(db.Model):
-    __tablename__ = 'artist'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    city = db.Column(db.String(120))
-    state = db.Column(db.String(120))
-    phone = db.Column(db.String(120))
-    website = db.Column(db.String(500))
-    genres = db.Column(db.Enum('Alternative', 'Blues','Classical','Country','Electronic','Folk','funk','Hip-Hop',
-   'Heavy Metal','Instrumental','Jazz','Musical Theatre','Pop','Punk','R&B','Rock n Roll','Soul','Other', name ='genrestypes'))
-    image_link = db.Column(db.String(500))
-    facebook_link = db.Column(db.String(120))
-    seeking_venue = db.Column(db.Boolean, unique=False, default=False)
-    seeking_description = db.Column(db.String(500))
-    venues = db.relationship("Venue", secondary="association", back_populates="artists")
-
-class Association(db.Model):
-    __tablename__ = 'association'
-    venue_id = db.Column(db.ForeignKey('venue.id'), primary_key=True)
-    artist_id = db.Column(db.ForeignKey('artist.id'), primary_key=True)
-    start_time = db.Column(db.DateTime())
-
 
 
 #----------------------------------------------------------------------------#
@@ -132,33 +83,35 @@ def search_venues():
 
 @app.route('/venues/<int:venue_id>')
 def show_venue(venue_id):
+
+
   venue=Venue.query.get(venue_id)
   upcoming_shows_data=[]
   upcoming_shows_count=0
-  upcoming_shows=db.session.query(Artist,Association).filter(Association.artist_id==Artist.id,Venue.id==venue_id,Association.start_time>=date).all()  
-  for upcoming_show in upcoming_shows:
+  upcoming_shows_query = db.session.query(Association).filter(Association.venue_id==venue_id).filter(Association.start_time>=datetime.now()).all()   
+  for upcoming_show in upcoming_shows_query:
     upcoming_shows_count+= 1
-    dateStr = upcoming_show.Association.start_time.strftime("%d %b, %Y")
+    dateStr = upcoming_show.start_time.strftime("%d %b, %Y")
     upcoming_shows_data.append({
-      "artist_id": upcoming_show.Association.artist_id,
-      "artist_name": upcoming_show.Artist.name,
-      "artist_image_link": upcoming_show.Artist.image_link,
+      "artist_id": upcoming_show.artist_id,
+      "artist_name": Artist.query.get(upcoming_show.artist_id).name,
+      "artist_image_link": Artist.query.get(upcoming_show.artist_id).image_link,
       "start_time": dateStr
     })
 
+
   past_shows_data=[]
   past_shows_count=0
-  past_shows=db.session.query(Artist,Association).filter(Association.artist_id==Artist.id,Venue.id==venue_id,Association.start_time<date).all()  
-  for past_show in past_shows:
+  past_shows_query = db.session.query(Association).filter(Association.venue_id==venue_id).filter(Association.start_time<datetime.now()).all()   
+  for past_show in past_shows_query:
     past_shows_count+= 1
-    dateStr = past_show.Association.start_time.strftime("%d %b, %Y")
+    dateStr = past_show.start_time.strftime("%d %b, %Y")
     past_shows_data.append({
-      "artist_id": past_show.Association.artist_id,
-      "artist_name": past_show.Artist.name,
-      "artist_image_link": past_show.Artist.image_link,
+      "artist_id": past_show.artist_id,
+      "artist_name": Artist.query.get(past_show.artist_id).name,
+      "artist_image_link": Artist.query.get(past_show.artist_id).image_link,
       "start_time": dateStr
     })
-  print(upcoming_shows_data)
   data={
     "id": venue.id,
     "name": venue.name,
@@ -186,10 +139,10 @@ def create_venue_form():
   form = VenueForm()
   return render_template('forms/new_venue.html', form=form)
 
+
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-  error = False
-
+  error = False 
   try:
     name = request.form['name']
     city = request.form['city']
@@ -197,10 +150,10 @@ def create_venue_submission():
     address = request.form['address']
     phone = request.form['phone']
     image_link = request.form['image_link']
-    genres = request.form['genres']
+    genres = request.form.getlist('genres')
     website = request.form['website_link']
     facebook_link = request.form['facebook_link']
-    seeking_talent=True if request.form['seeking_talent'] else False
+    seeking_talent=True if request.form.get('seeking_talent') else False
     new_venue = Venue(name=name,city=city,state=state,address=address,phone=phone,image_link=image_link,facebook_link=facebook_link,genres=genres,website=website,seeking_talent=seeking_talent)
     db.session.add(new_venue)
     db.session.commit()
@@ -254,27 +207,27 @@ def show_artist(artist_id):
   artist=Artist.query.get(artist_id)
   upcoming_shows_data=[]
   upcoming_shows_count=0
-  upcoming_shows=db.session.query(Venue,Association).filter(Association.venue_id==Venue.id,Association.artist_id==artist_id,Association.start_time>=date).all()  
-  for upcoming_show in upcoming_shows:
+  upcoming_shows_query = db.session.query(Association).filter(Association.artist_id==artist_id).filter(Association.start_time>=datetime.now()).all()   
+  for upcoming_show in upcoming_shows_query:
     upcoming_shows_count+= 1
-    dateStr = upcoming_show.Association.start_time.strftime("%d %b, %Y")
+    dateStr = upcoming_show.start_time.strftime("%d %b, %Y")
     upcoming_shows_data.append({
-      "venue_id": upcoming_show.Association.venue_id,
-      "venue_name": upcoming_show.Venue.name,
-      "venue_image_link": upcoming_show.Venue.image_link,
+      "venue_id": upcoming_show.venue_id,
+      "venue_name": Venue.query.get(upcoming_show.venue_id).name,
+      "venue_image_link": Venue.query.get(upcoming_show.venue_id).image_link,
       "start_time": dateStr
     })
 
   past_shows_data=[]
   past_shows_count=0
-  past_shows=db.session.query(Venue,Association).filter(Association.venue_id==Venue.id,Association.artist_id==artist_id,Association.start_time<date).all()  
-  for past_show in past_shows:
+  past_show_query = db.session.query(Association).filter(Association.artist_id==artist_id).filter(Association.start_time<datetime.now()).all()   
+  for past_show in past_show_query:
     past_shows_count+= 1
-    dateStr = past_show.Association.start_time.strftime("%d %b, %Y")
+    dateStr = past_show.start_time.strftime("%d %b, %Y")
     past_shows_data.append({
-      "venue_id": past_show.Association.venue_id,
-      "venue_name": past_show.Venue.name,
-      "venue_image_link": past_show.Venue.image_link,
+      "venue_id": past_show.venue_id,
+      "venue_name": Venue.query.get(past_show.venue_id).name,
+      "venue_image_link": Venue.query.get(past_show.venue_id).image_link,
       "start_time": dateStr
     })
   data={
@@ -312,10 +265,10 @@ def edit_artist_submission(artist_id):
     artist.name = request.form['name']
     artist.city = request.form['city']
     artist.state = request.form['state']
-    artist.genres = request.form['genres']
+    artist.genres = request.form.getlist('genres')
     artist.phone = request.form['phone']
     artist.image_link = request.form['image_link']
-    artist.seeking_venue = True if request.form['seeking_venue'] else False
+    artist.seeking_venue = True if request.form.get('seeking_venue') else False
     artist.seeking_description = request.form['seeking_description']
     artist.image_link = request.form['image_link']
     artist.facebook_link = request.form['facebook_link']
@@ -346,7 +299,7 @@ def edit_venue_submission(venue_id):
     venue.name = request.form['name']
     venue.city = request.form['city']
     venue.state = request.form['state']
-    venue.genres = request.form['genres']
+    venue.genres = request.form.getlist('genres')
     venue.phone = request.form['phone']
     venue.image_link = request.form['image_link']
     venue.seeking_talent = True if request.form['seeking_talent'] else False
@@ -381,12 +334,12 @@ def create_artist_submission():
     name = request.form['name']
     city = request.form['city']
     state = request.form['state']
-    genres = request.form['genres']
+    genres = request.form.getlist('genres')
     phone = request.form['phone']
     image_link = request.form['image_link']
     facebook_link = request.form['facebook_link']
     seeking_description = request.form['seeking_description']
-    seeking_venue=True if request.form['seeking_venue'] else False
+    seeking_venue=True if request.form.get('seeking_venue') else False
     new_artist = Artist(name=name,city=city,state=state,genres=genres,phone=phone,image_link=image_link,facebook_link=facebook_link,seeking_venue=seeking_venue,seeking_description=seeking_description)
     db.session.add(new_artist)
     db.session.commit()

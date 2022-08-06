@@ -1,8 +1,8 @@
-"""seeking
+"""genres
 
-Revision ID: df3cad85caae
+Revision ID: 10674200f10b
 Revises: 
-Create Date: 2022-08-06 20:21:28.222492
+Create Date: 2022-08-06 23:01:50.746801
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'df3cad85caae'
+revision = '10674200f10b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('state', sa.String(length=120), nullable=True),
     sa.Column('phone', sa.String(length=120), nullable=True),
     sa.Column('website', sa.String(length=500), nullable=True),
-    sa.Column('genres', sa.Enum('Alternative', 'Blues', 'Classical', 'Country', 'Electronic', 'Folk', 'funk', 'Hip-Hop', 'Heavy Metal', 'Instrumental', 'Jazz', 'Musical Theatre', 'Pop', 'Punk', 'R&B', 'Rock n Roll', 'Soul', 'Other', name='genrestypes'), nullable=True),
+    sa.Column('genres', sa.ARRAY(sa.String(length=50)), nullable=True),
     sa.Column('image_link', sa.String(length=500), nullable=True),
     sa.Column('facebook_link', sa.String(length=120), nullable=True),
     sa.Column('seeking_venue', sa.Boolean(), nullable=True),
@@ -43,7 +43,7 @@ def upgrade():
     sa.Column('website', sa.String(length=500), nullable=True),
     sa.Column('facebook_link', sa.String(length=120), nullable=True),
     sa.Column('seeking_talent', sa.Boolean(), nullable=True),
-    sa.Column('genres', sa.Enum('Alternative', 'Blues', 'Classical', 'Country', 'Electronic', 'Folk', 'funk', 'Hip-Hop', 'Heavy Metal', 'Instrumental', 'Jazz', 'Musical Theatre', 'Pop', 'Punk', 'R&B', 'Rock n Roll', 'Soul', 'Other', name='genrestypes'), nullable=True),
+    sa.Column('genres', sa.ARRAY(sa.String(length=50)), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('association',
