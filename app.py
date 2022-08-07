@@ -145,6 +145,7 @@ def create_venue_submission():
   form = VenueForm(request.form)
   if not form.validate():
     abort(400) 
+  error = False
   try:
     name = request.form['name']
     city = request.form['city']
@@ -165,6 +166,7 @@ def create_venue_submission():
     print(sys.exc_info())
   finally:
     db.session.close()
+    
   if not error:
     flash('Venue ' + request.form['name'] + ' was successfully listed!')
     return render_template('pages/home.html')
