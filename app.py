@@ -88,28 +88,28 @@ def show_venue(venue_id):
   venue=Venue.query.get(venue_id)
   upcoming_shows_data=[]
   upcoming_shows_count=0
-  upcoming_shows_query = db.session.query(Association).filter(Association.venue_id==venue_id).filter(Association.start_time>=datetime.now()).all()   
+  upcoming_shows_query = db.session.query(Association).with_entities(Association.artist_id,Association.venue_id,Association.start_time,Artist.name,Artist.image_link).join(Artist ,Artist.id==Association.artist_id).filter(Association.venue_id==venue_id,Association.start_time>=datetime.now()).all()  
   for upcoming_show in upcoming_shows_query:
     upcoming_shows_count+= 1
     dateStr = upcoming_show.start_time.strftime("%d %b, %Y")
     upcoming_shows_data.append({
       "artist_id": upcoming_show.artist_id,
-      "artist_name": Artist.query.get(upcoming_show.artist_id).name,
-      "artist_image_link": Artist.query.get(upcoming_show.artist_id).image_link,
+      "artist_name": upcoming_show.name,
+      "artist_image_link": upcoming_show.image_link,
       "start_time": dateStr
     })
 
 
   past_shows_data=[]
   past_shows_count=0
-  past_shows_query = db.session.query(Association).filter(Association.venue_id==venue_id).filter(Association.start_time<datetime.now()).all()   
+  past_shows_query = db.session.query(Association).with_entities(Association.artist_id,Association.venue_id,Association.start_time,Artist.name,Artist.image_link).join(Artist ,Artist.id==Association.artist_id).filter(Association.venue_id==venue_id,Association.start_time<datetime.now()).all()  
   for past_show in past_shows_query:
     past_shows_count+= 1
     dateStr = past_show.start_time.strftime("%d %b, %Y")
     past_shows_data.append({
       "artist_id": past_show.artist_id,
-      "artist_name": Artist.query.get(past_show.artist_id).name,
-      "artist_image_link": Artist.query.get(past_show.artist_id).image_link,
+      "artist_name": past_show.name,
+      "artist_image_link": past_show.image_link,
       "start_time": dateStr
     })
   data={
@@ -142,7 +142,9 @@ def create_venue_form():
 
 @app.route('/venues/create', methods=['POST'])
 def create_venue_submission():
-  error = False 
+  form = VenueForm(request.form)
+  if not form.validate():
+    abort(400) 
   try:
     name = request.form['name']
     city = request.form['city']
@@ -207,27 +209,27 @@ def show_artist(artist_id):
   artist=Artist.query.get(artist_id)
   upcoming_shows_data=[]
   upcoming_shows_count=0
-  upcoming_shows_query = db.session.query(Association).filter(Association.artist_id==artist_id).filter(Association.start_time>=datetime.now()).all()   
+  upcoming_shows_query = db.session.query(Association).with_entities(Association.artist_id,Association.venue_id,Association.start_time,Venue.name,Venue.image_link).join(Venue ,Venue.id==Association.venue_id).filter(Association.venue_id==artist_id,Association.start_time>=datetime.now()).all()  
   for upcoming_show in upcoming_shows_query:
     upcoming_shows_count+= 1
     dateStr = upcoming_show.start_time.strftime("%d %b, %Y")
     upcoming_shows_data.append({
       "venue_id": upcoming_show.venue_id,
-      "venue_name": Venue.query.get(upcoming_show.venue_id).name,
-      "venue_image_link": Venue.query.get(upcoming_show.venue_id).image_link,
+      "venue_name": upcoming_show.name,
+      "venue_image_link": upcoming_show.image_link,
       "start_time": dateStr
     })
 
   past_shows_data=[]
   past_shows_count=0
-  past_show_query = db.session.query(Association).filter(Association.artist_id==artist_id).filter(Association.start_time<datetime.now()).all()   
+  past_show_query = db.session.query(Association).with_entities(Association.artist_id,Association.venue_id,Association.start_time,Venue.name,Venue.image_link).join(Venue ,Venue.id==Association.venue_id).filter(Association.venue_id==artist_id,Association.start_time<datetime.now()).all()  
   for past_show in past_show_query:
     past_shows_count+= 1
     dateStr = past_show.start_time.strftime("%d %b, %Y")
     past_shows_data.append({
       "venue_id": past_show.venue_id,
-      "venue_name": Venue.query.get(past_show.venue_id).name,
-      "venue_image_link": Venue.query.get(past_show.venue_id).image_link,
+      "venue_name": past_show.name,
+      "venue_image_link": past_show.image_link,
       "start_time": dateStr
     })
   data={
@@ -259,6 +261,9 @@ def edit_artist(artist_id):
 
 @app.route('/artists/<int:artist_id>/edit', methods=['POST'])
 def edit_artist_submission(artist_id):
+  form = ArtistForm(request.form)
+  if not form.validate():
+    abort(400) 
   error = False
   try:
     artist=Artist.query.get(artist_id)
@@ -293,6 +298,9 @@ def edit_venue(venue_id):
 
 @app.route('/venues/<int:venue_id>/edit', methods=['POST'])
 def edit_venue_submission(venue_id):
+  form = VenueForm(request.form)
+  if not form.validate():
+    abort(400) 
   error = False
   try:
     venue=Venue.query.get(venue_id)
@@ -329,6 +337,9 @@ def create_artist_form():
 
 @app.route('/artists/create', methods=['POST'])
 def create_artist_submission():
+  form = ArtistForm(request.form)
+  if not form.validate():
+    abort(400) 
   error = False
   try:
     name = request.form['name']
@@ -384,6 +395,9 @@ def create_shows():
 
 @app.route('/shows/create', methods=['POST'])
 def create_show_submission():
+  form = ShowForm(request.form)
+  if not form.validate():
+    abort(400) 
   error = False
   try:
     artist_id=request.form['artist_id']

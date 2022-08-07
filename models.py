@@ -40,8 +40,9 @@ class Artist(db.Model):
 
 class Association(db.Model):
     __tablename__ = 'association'
-    venue_id = db.Column(db.ForeignKey('venue.id'), primary_key=True)
-    artist_id = db.Column(db.ForeignKey('artist.id'), primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    venue_id = db.Column(db.ForeignKey('venue.id'))
+    artist_id = db.Column(db.ForeignKey('artist.id'))
     start_time = db.Column(db.DateTime())
 
 
